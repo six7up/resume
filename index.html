@@ -7,6 +7,7 @@
   @page { size: Letter; margin: 0.5in 0.6in; }
   * { box-sizing: border-box; }
   body {
+    position: relative;
     font-family: Calibri, "Segoe UI", Arial, sans-serif;
     color: #222;
     font-size: 10pt;
@@ -82,13 +83,43 @@
     font-style: italic;
   }
   strong { color: #1a1a1a; }
+
+  #lang-toggle {
+    position: absolute;
+    top: 0.2in;
+    right: 0.35in;
+    font-family: Calibri, "Segoe UI", Arial, sans-serif;
+    font-size: 8pt;
+    color: #999;
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 1px 7px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  #lang-toggle:hover { color: #1f6f6f; border-color: #1f6f6f; }
+
+  #content-en, #content-es {
+    opacity: 1;
+    transition: opacity 0.15s ease;
+  }
+  body.lang-es #content-en { display: none; }
+  body:not(.lang-es) #content-es { display: none; }
+
   @media print {
     body { padding: 0; }
     .note { display: none; }
+    #lang-toggle { display: none; }
   }
 </style>
 </head>
 <body>
+
+<button id="lang-toggle" type="button" aria-label="Switch language">ES</button>
+
+<div id="content-en">
 
 <p class="header-line"><strong>SAUL SILOS</strong> &nbsp;|&nbsp; Monterrey NL, Mexico &nbsp;|&nbsp; +52 1 818 681 4888 &nbsp;|&nbsp; saul_silos@outlook.com</p>
 
@@ -137,8 +168,9 @@
   <ul>
     <li>On the CRM team for Epicor Retail, delivered automatic redemption reversal, multi-tender support, multilingual support, and scoping-query backup/restore. Contributed to a dedicated CRM performance-testing initiative and to currency-conversion logic shared with Merchandising and Store Automation.</li>
     <li>On the Merchandising team, delivered features and fixes, including currency-conversion logic shared with CRM and Store Automation.</li>
+    <li>Contributed to the Point-of-Sale (POS) product within Epicor Retail, developing customizations and maintenance using VB.NET, C#, and SQL Server. Collaborated to integrate POS software with devices like card readers and barcode scanners.</li>
     <li>Core member of the Foundation team, contributing to a custom, low-level framework supporting the entire Epicor Retail suite, including Dev Studio, an internal tool for configuration needs that off-the-shelf tools couldn't meet at the time. This kept features highly configurable across the suite's higher-level applications.</li>
-    <li>Tech: .NET Framework, ADO.NET, Reflection, SQL Server, TFS, Visual Studio, SQL Server Profiler, SSMS, Agile/Scrum.</li>
+    <li>Tech: .NET Framework, VB.NET, C#, ADO.NET, Reflection, SQL Server, TFS, Visual Studio, SQL Server Profiler, SSMS, Agile/Scrum.</li>
   </ul>
 </div>
 
@@ -166,6 +198,103 @@
 
 <p class="note" style="margin-top:6px; padding-top:0; border-top:none;">Pluralsight (PS), Coursera (CE), LinkedIn (LN)</p>
 </div>
+
+</div>
+
+<div id="content-es">
+
+<p class="header-line"><strong>SAUL SILOS</strong> &nbsp;|&nbsp; Monterrey NL, México &nbsp;|&nbsp; +52 1 818 681 4888 &nbsp;|&nbsp; saul_silos@outlook.com</p>
+
+<h2>Perfil</h2>
+<p class="profile">Desarrollador .NET Senior con amplia experiencia en medios, retail, salud, la industria del concreto y consultoría empresarial, diseñando y construyendo sistemas backend en C# y ASP.NET Core. Con dominio de prácticas modernas de arquitectura y diseño, incluyendo Clean Architecture, SOLID y patrones de diseño, con entrega práctica de servicios estilo microservicios e integraciones en la nube de Azure. Enfocado en la optimización de rendimiento, manteniendo las aplicaciones actualizadas y seguras.</p>
+
+<h2>Habilidades Técnicas</h2>
+<div class="skills">
+<p>.NET Moderno y C#: C#, .NET Core (6, 8, 10), .NET Framework, ASP.NET Core, Web API, Minimal APIs, BackgroundService, Entity Framework, LINQ, Async/Await, Dependency Injection, Middleware, REST, Exception Handling, AuthN/AuthZ, OOP. | Arquitectura y Diseño: Clean Architecture, Microservicios (contexto .NET), SOLID, Patrones de Diseño. | Nube de Azure: Azure Functions, Cosmos DB, Service Bus, Logic Apps, Microsoft Entra ID, Azure Blob Storage, Azure Event Grid, Azure Data Factory. | Seguridad: OAuth &amp; OpenID Connect, JWT, Cookie Authentication, ASP.NET Core Identity. | Datos: SQL Server, MySQL. | Procesos y Herramientas: Agile/Scrum, Git, Fortify SSC, TFS / Azure DevOps. | Front-End (secundario): TypeScript/JavaScript, Angular, AngularJS. | También con Exposición a: Python, React, gRPC.</p>
+</div>
+
+<h2>Experiencia Profesional</h2>
+
+<div class="job">
+  <div class="job-header"><span class="company">Neoris: Desarrollador de Software Senior</span><span class="job-dates">2019 – Presente | Monterrey, México</span></div>
+  <ul>
+    <li>Construí, validé e implementé pipelines de escaneo de seguridad de Fortify SSC para aplicaciones internas, y progresivamente cerré los hallazgos resultantes hasta alcanzar una línea base de seguridad óptima. Después, actualicé frameworks y dependencias a sus últimas versiones soportadas y migré la autenticación de Active Directory a Microsoft Entra ID.</li>
+    <li>Desarrollé un módulo independiente de Gestión de Licencias para el Inventory Management System (IMS), encargado de importación, asignación y seguimiento de renovación de licencias. Construí un BackgroundService de .NET para monitorear el sistema de Órdenes de Compra y alimentar el módulo de forma asíncrona.</li>
+    <li>Desarrollé componentes de servicio de notificaciones en .NET como ensamblados (assemblies) cargables alojados en GIS, el scheduler y BackgroundService de la empresa que corre como Windows Service, con configuración basada en JSON y reflection para procesamiento e integración reutilizables, estilo ETL. Entregué notificaciones como cumpleaños, aniversarios laborales e hitos de onboarding, pero especialmente los recordatorios de cursos obligatorios — el más desafiante por su nivel de configurabilidad: un motor de reglas por país que controlaba países incluidos, horarios locales y frecuencia de recordatorios, alcanzando de forma confiable a miles de empleados sin violar horarios locales.</li>
+    <li>Pricing es una aplicación empresarial de uso intensivo para estimación de costos y planeación de recursos. Al crecer más allá de su diseño original, trabajé en mejorar rendimiento, escalabilidad y mantenibilidad en el backend .NET y el frontend Angular: reestructuración de carga de páginas, async/await en Entity Framework, HttpClient e I/O, paginación y límites de resultados, y optimización continua de LINQ y acceso a datos. En Angular, me concentré en las vistas de Financial Estimate, Resources y Fees, refinando reglas de negocio sobre validaciones, asignación de recursos, disponibilidad, tarifas, festivos, ausencias y distribución de horas.</li>
+    <li>Tecnologías: .NET Framework, .NET Core, ASP.NET, Angular, Entity Framework, LINQ, Async/Await, HttpClient, BackgroundService, SQL Server, Fortify SSC, Active Directory, Microsoft Entra ID, Quartz, JSON, Reflection, ETL.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-header"><span class="company">Cemex: Desarrollador de Software Senior</span><span class="job-dates">2018 – 2019 | Monterrey, México</span></div>
+  <ul>
+    <li>Durante el despliegue país por país de CemexGo, trabajé en: una integración estilo microservicio con proveedores externos de GPS vía Azure Functions y Cosmos DB para posición de camiones en tiempo real; una integración distribuida con REST Web API, Azure Functions y Service Bus para sincronizar estatus de entrega por país; y una API REST en ASP.NET que aplicaba firma digital a PDFs entrantes y los almacenaba en Azure Blob Storage.</li>
+    <li>Me uní regularmente al equipo de User Provisioning, construyendo Web APIs, optimizando procedimientos almacenados de SQL Server, y desplegando releases en los ambientes de dev, QA y pre-prod a través de TFS/Azure DevOps.</li>
+    <li>Piloté Logic Apps y Service Bus contra tráfico real de producción para evaluar su rendimiento y confiabilidad como candidatos para futuros flujos de integración.</li>
+    <li>Tecnologías: ASP.NET Core, REST, ASP.NET Web API, Azure Functions, Cosmos DB, Azure Blob Storage, SQL Server, Azure Logic Apps, Azure Service Bus, TFS/Azure DevOps.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-header"><span class="company">NRC Health / Softtek: Desarrollador de Software Senior</span><span class="job-dates">2016 – 2018 | Monterrey, México</span></div>
+  <ul>
+    <li>Desarrollador full-stack contratado para NRC Health (National Research Corporation). Construí y mejoré un widget interactivo con TypeScript/JavaScript y el patrón revealing module, usando AJAX contra un backend de ASP.NET Web API, permitiendo al personal construir y reordenar visualmente las jerarquías de hospitales, clínicas e instalaciones.</li>
+    <li>Construí una página de configuración administrativa que permitía a los clientes activar o desactivar el análisis de sentimiento de comentarios de pacientes, enviando las reseñas a un servicio externo de NLP (Semantria) y gestionando esa integración.</li>
+    <li>Tecnologías: ASP.NET Web API, TypeScript/JavaScript, jQuery, AJAX, Revealing Module Pattern, SQL Server, MySQL, Pentaho Kettle, TeamCity, Octopus Deploy.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-header"><span class="company">Epicor / Aptos: Desarrollador de Software Senior</span><span class="job-dates">2012 – 2016 | Monterrey, México</span></div>
+  <ul>
+    <li>En el equipo de CRM de Epicor Retail, entregué reversión automática de redención, soporte multi-tender, soporte multilingüe, y respaldo/restauración de scoping-query. Contribuí a una iniciativa dedicada de pruebas de rendimiento de CRM y a la lógica de conversión de moneda compartida con Merchandising y Store Automation.</li>
+    <li>En el equipo de Merchandising, entregué funcionalidades y correcciones, incluyendo la lógica de conversión de moneda compartida con CRM y Store Automation.</li>
+    <li>Contribuí al producto de Punto de Venta (POS) dentro de Epicor Retail, desarrollando personalizaciones y dando mantenimiento en VB.NET, C# y SQL Server. Colaboré para integrar el software POS con dispositivos como lectores de tarjeta y de código de barras.</li>
+    <li>Miembro clave del equipo de Foundation, contribuyendo a un framework propio de bajo nivel para toda la suite de Epicor Retail, incluyendo Dev Studio, herramienta interna de configuración que las soluciones comerciales no cubrían en ese momento, manteniendo las aplicaciones de alto nivel altamente configurables.</li>
+    <li>Tecnologías: .NET Framework, VB.NET, C#, ADO.NET, Reflection, SQL Server, TFS, Visual Studio, SQL Server Profiler, SSMS, Agile/Scrum.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-header"><span class="company">Grupo Reforma: Desarrollador de Software Junior/Senior</span><span class="job-dates">2000 – 2011 | Monterrey, México</span></div>
+  <ul>
+    <li>Co-diseñé y lideré la arquitectura del nuevo servicio de cable noticioso de Agencia Reforma (el más grande de México): aplicaciones para buscar, editar y publicar noticias, fotos y gráficos en múltiples bases de datos y catálogos.</li>
+    <li>Construí la aplicación original de alimentación de contenido para el lanzamiento de Agencia Reforma.</li>
+    <li>Desarrollé FotoEditor, aplicación de escritorio para gestionar fotos y su inserción en el flujo de producción del periódico.</li>
+    <li>Mejoré ImageArchivo, aplicación web del archivo fotográfico histórico del periódico, mapeando vistas previas a su ubicación en múltiples repositorios (principalmente CDs) para atender solicitudes de material archivado.</li>
+    <li>Establecí de forma individual las guías comerciales, y luego implementé, di soporte y administré el ad server, para reforma.com, elnorte.com y mural.com.</li>
+    <li>Tecnologías: VB6, VB.NET, Classic ASP, ASP.NET WebForms, C#, JavaScript, SQL Server, Windows Forms, IIS, OAS (Open AdStream).</li>
+  </ul>
+</div>
+
+<h2>Educación, Certificaciones Clave e Idiomas</h2>
+<div class="edu">
+<p><strong>Ingeniería en Sistemas Computacionales</strong>, Tecnológico de Monterrey (ITESM) | Especialización Python for Everybody, Universidad de Michigan (Coursera) | Google Project Management Fundamentals (Coursera) | Microsoft Certified Technology Specialist (.NET Framework 4, Web Applications) | Curso de Administración de Proyectos, MASPM | Entrenamiento en Arquitectura Empresarial, Milestone Consulting Group | <strong>Español:</strong> Nativo | <strong>Inglés:</strong> Dominio profesional</p>
+</div>
+
+<h2>Capacitación Continua</h2>
+<div class="train-cats">
+<p>.NET Moderno y C#: Expression Trees in C# (PS, 2026), ASP.NET Core: Middleware (LN, 2025), Dependency Injection in ASP.NET Core 6 (PS, 2025), C# Dependency Injection (PS, 2024), .NET 6: The Big Picture (PS, 2022), Understanding OWIN and Katana (PS, 2021), .NET 6: First Look (PS, 2021), Working with Arrays and Collections (PS, 2021), Implementing Autofac in ASP.NET (PS, 2021), ASP.NET Core 3.0: MVC Request Life Cycle (PS, 2020), What You Need to Know About .NET Core (PS, 2020). | Nube y Arquitectura: Orchestrating and Automating Azure Data Pipelines (PS, 2026), Microservices Communication (PS, 2023), ASP.NET Core 3 Microservices: Getting Started (PS, 2023), Vertical Slice Architecture (PS, 2026), Clean Architecture: Patterns, Practices, and Principles (PS, 2026), Architecting ASP.NET Core 3 (PS, 2023), Leveraging Common Middleware Packages (PS, 2023), Error Handling in Stateless Environments (PS, 2023). | Seguridad y Cumplimiento: Configuring Security Headers (PS, 2024), Authentication and Authorization (PS, 2022), Interview with Troy Hunt (PS, 2022), Getting Started with OAuth 2.0 (PS, 2021), OAuth2 and OpenID Connect Easy Now (PS, 2021), OAuth2 &amp; OpenID (PS, 2020).</p>
+
+<p class="note" style="margin-top:6px; padding-top:0; border-top:none;">Pluralsight (PS), Coursera (CE), LinkedIn (LN)</p>
+</div>
+
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('lang-toggle');
+  var body = document.body;
+  btn.addEventListener('click', function () {
+    var switchingToEs = !body.classList.contains('lang-es');
+    body.classList.toggle('lang-es', switchingToEs);
+    btn.textContent = switchingToEs ? 'EN' : 'ES';
+    document.documentElement.lang = switchingToEs ? 'es' : 'en';
+    document.title = switchingToEs ? 'Saul Silos - Currículum' : 'Saul Silos - Resume';
+  });
+})();
+</script>
 
 </body>
 </html>
